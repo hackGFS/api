@@ -20,6 +20,9 @@ Route::get('/', function()
 //Auth Routes that can be found in the AuthController
 Route::group(array('prefix' => 'auth'), function(){
 
+	//Check
+	Route::get('check', array('as' => 'auth.check', 'uses' => 'AuthController@check'));
+
 	//Registration
 	Route::post('register', array('as' => 'auth.register', 'uses' => 'AuthController@register'));
 
@@ -33,6 +36,8 @@ Route::group(array('prefix' => 'auth'), function(){
 
 //Mail routes that can be found in the MailController
 Route::group(array('prefix' => 'mail'), function(){
+
+	Route::get('all', array('as' => 'mail.all', 'uses' => 'MailController@all'));
 
 	//Sponsorship
 	Route::post('sponsor', array('as' => 'mail.sponsor', 'uses' => 'MailController@sponsor'));

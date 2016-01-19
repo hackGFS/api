@@ -77,4 +77,22 @@ class AuthController extends BaseController {
 		return $data;
 	}
 
+	public function check()
+	{
+
+		if(Sentry::check())
+		{
+
+			$data = Citrus::response('data', 1);
+
+		} else{
+
+			$data = Citrus::response('data', 0);
+
+		}
+
+		return $data;
+
+	}
+
 }

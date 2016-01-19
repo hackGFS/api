@@ -53,4 +53,30 @@ class MailController extends BaseController {
 
 	}
 
+	public function all()
+	{
+		try {
+
+			$emails = Email::all();
+
+			foreach ($emails as $email) {
+				
+				$user = Sentry::findUserById($email->user_id);
+
+				$email->user = $user;
+
+			}
+
+			$data = Citrus::response('data', $emails);
+			
+		} catch (Exception $e) {
+
+			$data = Citrus::response('error', $e);
+			
+		}
+
+		return $data;
+
+	}
+
 }

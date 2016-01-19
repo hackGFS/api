@@ -1,12 +1,12 @@
 <p>
 
 @if(is_null($user))
-Dear {{$name}}
+Dear {{$name}},
 @else
-{{$user->first_name}}
+{{$user->first_name}},
 @endif
 
-, <br /><br />
+<br /><br />
 
 {{$body}}
 
