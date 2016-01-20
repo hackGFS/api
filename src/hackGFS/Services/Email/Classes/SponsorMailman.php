@@ -22,9 +22,17 @@ use \Exception;
 class SponsorMailman extends PostOffice {
 
     
+    protected $company = null;
+
     protected $name = null;
 
-    //Set the name of the person receiving the email
+    //Set the name of the company receiving the email
+    public function setCompany($company)
+    {
+        $this->company = $company;
+    }
+
+    //Set the name of the PERSON receiving the email
     public function setName($name)
     {
         $this->name = $name;

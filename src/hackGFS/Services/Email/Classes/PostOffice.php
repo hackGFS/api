@@ -111,14 +111,12 @@ class PostOffice {
 
             $email->subject = $this->subject;
 
+            $email->company = $this->company;
+
             if(isset($this->name))
             {
                 
                 $email->name = $this->name;
-
-            } else {
-
-                $email->name = null;
 
             }
 
@@ -136,11 +134,20 @@ class PostOffice {
     		'user' => $user,
     	);
 
-    	if(isset($this->name))
+    	if(isset($this->company))
     	{
-    		$data['name'] = $this->name;
-    		$data['user'] = null;
-    	}
+            if(isset($this->name))
+            {
+                $data['name'] = $this->name;
+            } else {
+
+                $data['name'] = $this->company;
+
+            }
+
+            $data['user'] = null;
+    	
+        }
 
     	Mail::send('emails.template', $data, function($message) use ($data)
 		{

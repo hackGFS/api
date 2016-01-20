@@ -24,8 +24,16 @@ class MailController extends BaseController {
 
 		$data = array(
 			'user' => $user,
-			'company' => $input['name']
+			'company' => $input['company']
 			);
+
+		if(isset($input['name']))
+		{
+			if(!is_null($input['name']))
+			{
+				$email->setName($input['name']);
+			}	
+		}
 
 		$body = $email->getBody('intro', $data);
 
@@ -33,7 +41,7 @@ class MailController extends BaseController {
 		{
 			if($section == 'true')
 			{
-				$body = $body.$email->getBody($key, $input['name']);
+				$body = $body.$email->getBody($key, $input['company']);
 			}
 		}
 
@@ -41,7 +49,7 @@ class MailController extends BaseController {
 
 		$email->setBody($body);
 
-		$email->setName($input['name']);
+		$email->setCompany($input['company']);
 
 		$email->setReceiver($input['email']);
 
