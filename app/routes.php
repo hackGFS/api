@@ -23,6 +23,9 @@ Route::group(array('prefix' => 'auth'), function(){
 	//Check
 	Route::get('check', array('as' => 'auth.check', 'uses' => 'AuthController@check'));
 
+	//logout
+	Route::get('logout', array('as' => 'auth.logout', 'uses' => 'AuthController@logout'));
+
 	//Registration
 	Route::post('register', array('as' => 'auth.register', 'uses' => 'AuthController@register'));
 
@@ -32,12 +35,18 @@ Route::group(array('prefix' => 'auth'), function(){
 	//Activation
 	Route::get('activate/{code}', array('as' => 'auth.activate', 'uses' => 'AuthController@activate'));
 
+	
+
 });
 
 //Mail routes that can be found in the MailController
 Route::group(array('prefix' => 'mail'), function(){
 
+	//Return all the sent emails in DB
 	Route::get('all', array('as' => 'mail.all', 'uses' => 'MailController@all'));
+
+	//Return the section
+	Route::get('section', array('as' => 'mail.section', 'uses' => 'MailController@section'));
 
 	//Sponsorship
 	Route::post('sponsor', array('as' => 'mail.sponsor', 'uses' => 'MailController@sponsor'));

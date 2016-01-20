@@ -95,4 +95,22 @@ class AuthController extends BaseController {
 
 	}
 
+	public function logout()
+	{
+
+		try {
+
+			Sentry::logout();
+
+			$data = Citrus::response('success', 1);
+			
+		} catch (Exception $e) {
+
+			$data = Citrus::response('error', $e);
+			
+		}
+
+		return $data;
+	}
+
 }

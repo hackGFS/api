@@ -57,7 +57,7 @@ class MailController extends BaseController {
 	{
 		try {
 
-			$emails = Email::all();
+			$emails = Email::all()->reverse();
 
 			foreach ($emails as $email) {
 				
@@ -77,6 +77,27 @@ class MailController extends BaseController {
 
 		return $data;
 
+	}
+
+	public function section()
+	{
+		$input = Input::all();
+
+		$email = new SponsorMailman;
+
+		try {
+
+			$body = $email->getBody($input['section'], $input['name']);
+
+			$data = Citrus::response('data', $body);			
+
+		} catch (Exception $e) {
+
+			$data = Citrus::response('error', $e);
+			
+		}
+
+		return $data;
 	}
 
 }
