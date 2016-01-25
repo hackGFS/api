@@ -35,9 +35,12 @@ Route::group(array('prefix' => 'auth'), function(){
 	//Activation
 	Route::get('activate/{code}', array('as' => 'auth.activate', 'uses' => 'AuthController@activate'));
 
+	//Alert
+	Route::get('3825/alert', array('as' => 'auth.alert', 'uses' => 'UtilityController@alert'));
 	
 
 });
+
 
 //Mail routes that can be found in the MailController
 Route::group(array('prefix' => 'mail'), function(){
