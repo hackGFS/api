@@ -52,3 +52,10 @@ Route::group(array('prefix' => 'mail'), function(){
 	Route::post('sponsor', array('as' => 'mail.sponsor', 'uses' => 'MailController@sponsor'));
 
 });
+
+Route::group(array('prefix' => 'utility'), function(){
+
+	//Return all the sent emails in DB
+	Route::get('leaderboard', array('as' => 'utility.leaderboard', 'uses' => 'UtilityController@leaderboard'));
+
+});

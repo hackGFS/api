@@ -36,7 +36,7 @@ class AuthController extends BaseController {
 
 			$email->setBody($body);
 
-			$email->send();
+			$data = $email->send();
 
 		}
 
@@ -47,23 +47,40 @@ class AuthController extends BaseController {
 	{
 		$user = User::where('activation_code', '=', $code)->first();
 
-		$user = Sentry::findUserById($user->id);
+		try {
 
-		$data = Authenticator::activate($user);
+			if(is_null($user))
+			{
+				throw new Exception("There is no user with that activation code");
+				
+			}
 
-		if ($user->activated) {
+			$user = Sentry::findUserById($user->id);
 
-			$email = new UtilityMailman;
+			$data = Authenticator::activate($user);
 
-			$email->setReceiver($user->email);
+			if ($user->activated) {
 
-			$email->setSubject('Activated!');
+				$email = new UtilityMailman;
 
-			$body = $email->getBody('activated');
+				$email->setReceiver($user->email);
 
-			$email->send();
+				$email->setSubject('You are now Activated!');
 
+				$body = $email->getBody('activated');
+
+				$email->setBody($body);
+
+				$data = $email->send($user);
+
+			}
+			
+		} catch (Exception $e) {
+
+			$data = Citrus::response('error', $e);
+			
 		}
+
 
 		return $data;
 	}

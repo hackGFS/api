@@ -57,14 +57,21 @@ class PostOffice {
         return $body;
     }
 
-    public function send()
+    public function send($user = null)
     {
 
         //$data = $this->sendMail();
 
     	try {
-    		
-    		$data = $this->sendMail();
+    		if(is_null($user)){
+
+                $data = $this->sendMail();
+
+            } else{
+
+                $data = $this->sendMail($user);
+
+            }
 
     	} catch (Exception $e) {
     		
@@ -76,9 +83,14 @@ class PostOffice {
     
     }
 
-    private function sendMail()
+    private function sendMail($user = null)
     {
-        $user = Sentry::getUser();
+        if(is_null($user))
+        {
+
+            $user = Sentry::getUser();
+            
+        }
 
     	if(is_null($this->to))
     	{
@@ -97,32 +109,32 @@ class PostOffice {
     		throw new Exception("Please have valid content for the email. You cannot send an empty email");	
     	}
 
-        if (!is_null(Email::where('to', '=', $this->to)->first()))
-        {
-            throw new Exception("This email has already received a sponsorhip email");
-            
-        } else {
 
-            $email = new Email;
+        if($this instanceof hackGFS\Services\Email\Classes\SponsorMailman){
 
-            $email->to = $this->to;
-
-            $email->from = $this->from;
-
-            $email->subject = $this->subject;
-
-            $email->company = $this->company;
-
-            if(isset($this->name))
+            if (!is_null(Email::where('to', '=', $this->to)->first()))
             {
+                throw new Exception("This email has already received a sponsorhip email");
                 
+            } else {
+
+                $email = new Email;
+
+                $email->to = $this->to;
+
+                $email->from = $this->from;
+
+                $email->subject = $this->subject;
+
+                $email->company = $this->company;
+
                 $email->name = $this->name;
 
+                $email->body = $this->body;
+
+                $email->user_id = $user->id;
+
             }
-
-            $email->body = $this->body;
-
-            $email->user_id = $user->id;
 
         }
 
@@ -134,7 +146,7 @@ class PostOffice {
     		'user' => $user,
     	);
 
-    	if(isset($this->company))
+    	if(isset($this->company) && !is_null($this->company))
     	{
             if(isset($this->name))
             {

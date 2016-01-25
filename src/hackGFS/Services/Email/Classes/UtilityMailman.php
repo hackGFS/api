@@ -24,7 +24,7 @@ class UtilityMailman extends PostOffice {
     //A thanks for registering email that also sends out an activation link
     protected function thanks($user)
     {
-        $link = route('auth.activate', $user->activation_code);
+        $link = "http://club.hackgfs.io/#/activate/$user->activation_code";
 
         $data = "Thank you for registering to be a part of the hackGFS club as well as the Sponsorship Competition! As you may know, we are giving away an <b>Xbox One</b> to the person who sends out the most emails. You are soooo close to entering the competion. The only thing standing in your way is account activation, which can be completed by clicking the link below! Good luck and let the games begin! <br><br>Activate Account: <a href='".$link."'>".$link."</a>";
 
@@ -35,6 +35,11 @@ class UtilityMailman extends PostOffice {
     //The email that sends when activation is completed
     protected function activated()
     {
+        $link = "http://club.hackgfs.io/";
+
+        $data = "Your account has been registered!!! Start sending emails now to get ahead, and win that <b>Xbox One</b><br><br>Start Sending: <a href='".$link."'>".$link."</a>";
+
+        return $data;
 
     }
 
