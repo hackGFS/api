@@ -67,11 +67,11 @@ class UtilityController extends BaseController {
 
 		$email = new UtilityMailman;
 
-		$email->setSubject("We're Back - Compete for a free Xbox One");
+		$email->setSubject("Free Xbox One");
 
 		$link = "http://club.hackgfs.io/";
 
-		$body = "hackGFS is back and better than ever! Instead of giving away an iPad, we are now offering an <b>Xbox One</b> to whoever sends the most sponsorship emails, according to the leaderboard on our site! Since you had an original account with us, we are letting you know about the competition reopening a week before the rest of the GFS community! <br><br>If you are not interested in the Xbox One, don't fret. Although we are not able to give away <b>$400</b> in cash, we can award you a device of your choice that is of equal or lesser value!<br><br>Check us out at <a href='".$link."'>".$link."</a>";
+		$body = "hackGFS is back and better than ever! Instead of giving away an iPad, we are now offering an <b>Xbox One</b> to whoever sends the most sponsorship emails, according to the leaderboard on our site! Since you had an original account with us, we are letting you know about the competition reopening a week before the rest of the GFS community! <br><br>If you are not interested in the Xbox One, don't fret. Although we are not able to give away <b>$400</b> in cash, we can award you a device of your choice that is of equal or lesser value!<br><br>Check us out at <a href='".$link."'>".$link."</a><br><br>If you've forgotten your password, just reply to this email and let us know! Good luck!";
 
 		$email->setBody($body);
 
