@@ -110,7 +110,7 @@ class PostOffice {
     	}
 
 
-        if($this instanceof hackGFS\Services\Email\Classes\SponsorMailman){
+        if($this instanceof SponsorMailman){
 
             if (!is_null(Email::where('to', '=', $this->to)->first()))
             {
