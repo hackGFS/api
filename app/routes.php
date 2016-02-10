@@ -62,3 +62,13 @@ Route::group(array('prefix' => 'utility'), function(){
 	Route::get('leaderboard', array('as' => 'utility.leaderboard', 'uses' => 'UtilityController@leaderboard'));
 
 });
+
+Route::group(array('prefix' => 'user'), function(){
+
+	//Return all the sent emails in DB
+	Route::post('reset/request', array('as' => 'user.requestReset', 'uses' => 'UserController@requestReset'));
+
+	//Reset password
+	Route::post('reset', array('as' => 'user.reset', 'uses' => 'UserController@resetPassword'));
+
+});

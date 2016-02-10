@@ -43,5 +43,30 @@ class UtilityMailman extends PostOffice {
 
     }
 
+    //Password reset functionality
+    protected function reset($user)
+    {
+        $link = "http://club.hackgfs.io/#/reset/$user->reset_password_code";
+
+        $data = "Hey! It seems like you've requested a password reset link. We've attached it below. Just enter in your new password and you'll be all set!<br><br>Reset Password: <a href='".$link."'>".$link."</a>";
+
+        return $data;
+
+    }
+
+    //Password reset functionality
+    protected function sreset($user)
+    {
+        $link = "http://club.hackgfs.io/#/";
+
+        $data = "Just a heads up! Your password was just changed! Get right back in to the action at <a href='".$link."'>".$link."</a>";
+
+        return $data;
+
+    }
+
+
+
+
     
 }
