@@ -130,4 +130,32 @@ class AuthController extends BaseController {
 		return $data;
 	}
 
+	public function subscribe(){
+
+		$email = Input::get('email');
+
+		$subscribe = new Subscribe;
+
+		$subscribe->email = $email;
+
+		try {
+
+			$subscribe->save();
+
+			$data = Citrus::response('data', 'You have been successfully subscribed');
+			
+		} catch (Exception $e) {
+
+			//$e->setMessage('You are already subscribed!');
+
+			$data = Citrus::response('error', $e);
+			
+		}
+
+		return $data;
+
+		
+
+	}
+
 }

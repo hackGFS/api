@@ -35,8 +35,10 @@ Route::group(array('prefix' => 'auth'), function(){
 	//Activation
 	Route::get('activate/{code}', array('as' => 'auth.activate', 'uses' => 'AuthController@activate'));
 
-	//Alert
-	Route::get('3825/alert', array('as' => 'auth.alert', 'uses' => 'UtilityController@alert'));
+	//Subscribe
+	Route::post('subscribe', array('as' => 'auth.subscribe', 'uses' => 'AuthController@subscribe'));
+
+	
 	
 
 });

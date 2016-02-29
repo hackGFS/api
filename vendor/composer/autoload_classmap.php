@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddSubscriptions' => $baseDir . '/app/database/migrations/2016_02_27_144146_add_subscriptions.php',
     'AuthController' => $baseDir . '/app/controllers/Auth/AuthController.php',
     'BaseController' => $baseDir . '/app/controllers/BaseController.php',
     'Boris\\Boris' => $vendorDir . '/d11wtq/boris/lib/Boris/Boris.php',
@@ -1041,6 +1042,7 @@ return array(
     'SessionHandlerInterface' => $vendorDir . '/symfony/http-foundation/Symfony/Component/HttpFoundation/Resources/stubs/SessionHandlerInterface.php',
     'Stack\\Builder' => $vendorDir . '/stack/builder/src/Stack/Builder.php',
     'Stack\\StackedHttpKernel' => $vendorDir . '/stack/builder/src/Stack/StackedHttpKernel.php',
+    'Subscribe' => $baseDir . '/app/models/Subscribe.php',
     'Symfony\\Component\\BrowserKit\\Client' => $vendorDir . '/symfony/browser-kit/Symfony/Component/BrowserKit/Client.php',
     'Symfony\\Component\\BrowserKit\\Cookie' => $vendorDir . '/symfony/browser-kit/Symfony/Component/BrowserKit/Cookie.php',
     'Symfony\\Component\\BrowserKit\\CookieJar' => $vendorDir . '/symfony/browser-kit/Symfony/Component/BrowserKit/CookieJar.php',
