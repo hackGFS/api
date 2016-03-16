@@ -50,6 +50,15 @@ Route::group(array('prefix' => 'mail'), function(){
 	//Return all the sent emails in DB
 	Route::get('all', array('as' => 'mail.all', 'uses' => 'MailController@all'));
 
+	//Delete an email with {ID}
+	Route::delete('m/{id}', array('as' => 'mail.delete', 'uses' => 'MailController@delete'));
+
+	//Get an email with {ID}
+	Route::get('m/{id}', array('as' => 'mail.detail', 'uses' => 'MailController@detail'));
+
+	//Search mail by company
+	Route::get('s', array('as' => 'mail.search', 'uses' => 'MailController@search'));
+
 	//Return the section
 	Route::get('section', array('as' => 'mail.section', 'uses' => 'MailController@section'));
 

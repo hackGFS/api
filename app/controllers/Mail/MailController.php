@@ -108,4 +108,86 @@ class MailController extends BaseController {
 		return $data;
 	}
 
+	public function delete($id){
+
+		$user = Sentry::getUser();
+
+		try {
+
+			if($user->id != 1 and $user->id != 12){
+
+				throw new Exception("You do not have the permission to perform this action");
+
+			}
+
+			$email = Email::find($id);
+
+			$email->delete();
+
+			$data = Citrus::response('data', 'Email successfully deleted');
+			
+		} catch (Exception $e) {
+
+			$data = Citrus::response('error', $e);
+			
+		}
+
+		return $data;
+
+	}
+
+	public function search(){
+
+		$q = Input::get('q');
+
+		try {
+
+			$emails = Email::where('company', 'like', "%$q%")->get();
+
+			foreach ($emails as $email) {
+				
+				$user = Sentry::findUserById($email->user_id);
+
+				$email->user = $user;
+
+			}
+
+			$data = Citrus::response('data', $emails);
+			
+		} catch (Exception $e) {
+
+			$data = Citrus::response('error', $e);
+			
+		}
+
+
+		return $data;
+
+	}
+
+	public function detail($id)
+	{
+
+		try {
+
+			$email = Email::find($id);
+
+			if(is_null($email)){
+
+				throw new Exception("This email could not be found.");
+
+			}
+
+			$data = Citrus::response('data', $email);
+			
+		} catch (Exception $e) {
+
+			$data = Citrus::response('error', $e);
+			
+		}
+
+		return $data;
+
+	}
+
 }
