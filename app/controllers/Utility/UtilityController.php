@@ -48,9 +48,6 @@ class UtilityController extends BaseController {
 			//Unset James
 			unset($data[12]);
 
-			//Unset Eli Schwemler
-			unset($data[16]);
-
 			//Unset Ben Silver
 			unset($data[13]);
 
