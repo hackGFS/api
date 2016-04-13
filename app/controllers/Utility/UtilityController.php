@@ -42,15 +42,6 @@ class UtilityController extends BaseController {
 
 			}
 
-			//Unset Noah
-			unset($data[1]);
-
-			//Unset James
-			unset($data[12]);
-
-			//Unset Ben Silver
-			unset($data[13]);
-
 			array_multisort($data, SORT_DESC);
 
 			$response = Citrus::response('data', $data);
