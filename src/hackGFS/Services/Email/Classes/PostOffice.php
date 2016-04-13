@@ -178,7 +178,7 @@ class PostOffice {
 				->subject($data['subject'])
 				->from($data['from'], 'The hackGFS Community');
 
-            if(!is_null($data['paths'])){
+            if(isset($data['paths'])){
 
                 $message->attach($data['paths']['info'], array('as' => 'hackGFS Information Sheet'));
 
