@@ -82,4 +82,7 @@ Route::group(array('prefix' => 'user'), function(){
 	//Reset password
 	Route::post('reset', array('as' => 'user.reset', 'uses' => 'UserController@resetPassword'));
 
+	//User Detail Information
+	Route::get('/p/{id}', array('as' => 'user.detail', 'uses' => 'UserController@detail'));
+
 });

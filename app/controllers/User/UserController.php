@@ -96,5 +96,36 @@ class UserController extends BaseController {
 	    return $data;
 	}
 
+	public function detail($id){
+
+		$user = User::find($id);
+
+		try {
+
+			if (!is_null($user)) {
+
+				$user->count = $user->email()->count();
+
+				$user->emails = $user->email()->get();
+
+				$data = Citrus::response('data', $user);
+				
+			} else {
+
+				throw new Exception('User not found');
+
+			}
+			
+		} catch (Exception $e) {
+
+			$data = Citrus::response('error', $e);
+			
+		}
+
+
+		return $data;
+
+	}
+
 
 }

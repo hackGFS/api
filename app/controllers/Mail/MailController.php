@@ -53,7 +53,7 @@ class MailController extends BaseController {
 
 		$email->setReceiver($input['email']);
 
-		$email->setSubject('Sponsorship Opportunity');
+		$email->setSubject('Participants Needed');
 
 		$data = $email->send();
 

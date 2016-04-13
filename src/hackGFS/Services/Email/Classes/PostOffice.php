@@ -146,6 +146,16 @@ class PostOffice {
     		'user' => $user,
     	);
 
+        if($this instanceof SponsorMailman){
+
+            $data['paths'] = array(
+                'info' => asset('attach/info.pdf'),
+                'poster' => asset('attach/poster.pdf'),
+                'posterbw' => asset('attach/posterbw.pdf')
+                );
+
+        }
+
     	if(isset($this->company) && !is_null($this->company))
     	{
             if(isset($this->name))
@@ -167,6 +177,17 @@ class PostOffice {
 				->to($data['to'])
 				->subject($data['subject'])
 				->from($data['from'], 'The hackGFS Community');
+
+            if(!is_null($data['paths'])){
+
+                $message->attach($data['paths']['info'], array('as' => 'hackGFS Information Sheet'));
+
+                $message->attach($data['paths']['poster'], array('as' => 'hackGFS Color Poster'));
+
+                $message->attach($data['paths']['posterbw'], array('as' => 'hackGFS Black & White Poster'));
+
+            }  
+
 		});
 
         if(isset($email))

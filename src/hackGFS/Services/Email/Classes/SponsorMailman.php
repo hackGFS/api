@@ -22,14 +22,14 @@ use \Exception;
 class SponsorMailman extends PostOffice {
 
     
-    protected $company = null;
+    protected $school = null;
 
     protected $name = null;
 
     //Set the name of the company receiving the email
-    public function setCompany($company)
+    public function setCompany($school)
     {
-        $this->company = $company;
+        $this->company = $school;
     }
 
     //Set the name of the PERSON receiving the email
@@ -84,9 +84,9 @@ class SponsorMailman extends PostOffice {
     {
         $user = $data['user'];
 
-        $company = $data['company'];
+        $school = $data['company'];
 
-        $section = "My name is $user->first_name $user->last_name, and I am in grade $user->grade at Germantown Friends School in Philadelphia, PA. My team and I are passionate about technology and the education that surrounds it, which is why we are hosting our school and city’s first high school hackathon, hackGFS. We would love for you to be a part of a groundbreaking experience by joining us as a sponsor, bringing mutual benefit to both hackGFS and $company.<br><br>A hackathon is an invention marathon, a twenty-four hour flurry full of creativity, teamwork and fun where all forms of technological innovation are welcome. Teams of up to four participants work together using technology to build an app or website that solves a problem. At the end of the event, each team presents their creation to an audience of their peers and a panel of judges. Those teams with the most creative ideas are then awarded prizes.<br><br>hackGFS will be hosted at Germantown Friends School on April 9-10, 2016. We expect to have roughly 200 high school hackers from in and around the Greater Philadelphia area. Because hackGFS will be Philadelphia’s first high school hackathon, we want to make it memorable for everyone who participates, and that is why we are asking you to help sponsor the event. All donations will be used to provide food, drink and prizes. In return, we encourage sponsors to interact and form relationships with some of the possible leaders and innovators of tomorrow from the Philadelphia area. As a sponsor, you have the chance and the opportunity to leave a lasting impression on hackGFS participants by introducing them to your brands and educating them on your products or services.<br><br>";
+        $section = "My name is $user->first_name $user->last_name, and I am in grade $user->grade at Germantown Friends School (GFS). GFS is hosting Philadelphia’s first high school hackathon - hackGFS - and would love for your school’s students to participate! We’re a 12 hour hackathon on May 14th. Hackathons are invention marathons, a twelve hour flurry of creativity, teamwork and fun where all forms of technological innovation are welcome. Teams of up to four participants work together to build an app or website that solves a problem. At the end of the event, each team is able to present their creation to an audience of their peers as well as a panel of judges.<br><br>";
 
         return $section;
     }
@@ -95,9 +95,11 @@ class SponsorMailman extends PostOffice {
     {
         $user = $data['user'];
 
-        $company = $data['company'];
+        $school = $data['company'];
         
-        $section = "We started hackGFS to allow students who may feel boxed in by core curriculums to realize what they are capable of doing with technology. Who knows - this exposure might result in someone finding their passion, as we clearly have. If we ignite at least one spark, we will know that we have succeeded in our mission!<br><br>We have presented you with our vision, but we also realize that we cannot reach it without partnering with many others. We hope that we have ignited a desire in you to join us in this endeavor. Attached is a link to our sponsorship tiers so that you can see what is available. Please feel free to email us if you have any questions or would like to know more. If you are not the right person to contact about this matter, we would be grateful if you would forward it to the appropriate person. Thank you for your time.<br><br>";
+        $section = "We hope that you will pass this information on to those who you think would be interested in attending. Anyone is able to come - we will be running workshops for beginners. The only thing that someone needs to participate is an open mind and a laptop! I've attached our formal information sheet, which has more detailed information. There are also some posters attached, which are meant to be printed and hung up around computer labs, if that is possible. 
+            <br><br>
+            Thanks for your time.";
 
         return $section;
     }
