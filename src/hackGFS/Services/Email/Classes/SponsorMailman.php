@@ -86,7 +86,7 @@ class SponsorMailman extends PostOffice {
 
         $school = $data['company'];
 
-        $section = "My name is $user->first_name $user->last_name, and I am in grade $user->grade at Germantown Friends School (GFS). GFS is hosting Philadelphia’s first high school hackathon - hackGFS - and would love for your school’s students to participate! We’re a 12 hour hackathon on May 14th. Hackathons are invention marathons, a twelve hour flurry of creativity, teamwork and fun where all forms of technological innovation are welcome. Teams of up to four participants work together to build an app or website that solves a problem. At the end of the event, each team is able to present their creation to an audience of their peers as well as a panel of judges.<br><br>";
+        $section = "My name is $user->first_name $user->last_name, and I am in grade $user->grade at Germantown Friends School (GFS). GFS is hosting Philadelphia’s first high school hackathon, hackGFS, on Saturday, May 14, from 10 a.m. to 10 p.m., and would love for your school’s students to participate! A hackathon is essentially an invention marathon, a 12-hour flurry of creativity, teamwork and fun, where all forms of technological innovation are welcome. Teams of up to four participants work together to build an app or website that solves a problem. At the end of the event, each team is able to present their creation to an audience of their peers as well as a panel of judges.<br><br>";
 
         return $section;
     }
@@ -97,7 +97,7 @@ class SponsorMailman extends PostOffice {
 
         $school = $data['company'];
         
-        $section = "We hope that you will pass this information on to those who you think would be interested in attending. Anyone is able to come - we will be running workshops for beginners. The only thing that someone needs to participate is an open mind and a laptop! I've attached our formal information sheet, which has more detailed information. There are also some posters attached, which are meant to be printed and hung up around computer labs, if that is possible. 
+        $section = "We hope that you will pass this information on to those students who you think would be interested in attending. Anyone is welcome; we will be running workshops for beginners. The only thing that someone needs to participate is an open mind and a laptop! I've attached our formal information sheet, which has more specifics about the event. There are also some posters attached, which are meant to be printed and hung up in computer labs and around campus, if possible.
             <br><br>
             Thanks for your time.";
 
