@@ -65,6 +65,9 @@ Route::group(array('prefix' => 'mail'), function(){
 	//Sponsorship
 	Route::post('sponsor', array('as' => 'mail.sponsor', 'uses' => 'MailController@sponsor'));
 
+	//Custom Message
+	Route::post('custom', array('as' => 'mail.custom', 'uses' => 'MailController@custom'));
+
 });
 
 Route::group(array('prefix' => 'utility'), function(){

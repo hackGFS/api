@@ -21,6 +21,15 @@ use \Exception;
 
 class UtilityMailman extends PostOffice {
 
+    protected $report = 1;
+
+    //Return with Citrus, or just T/F statements
+    public function setReportStatus($status){
+
+        $this->report = $status;
+
+    }
+
     //A thanks for registering email that also sends out an activation link
     protected function thanks($user)
     {

@@ -190,4 +190,74 @@ class MailController extends BaseController {
 
 	}
 
+	//This huge ass function sends out custom emails. Emails that fail do not throw errors, but are instead marked and shown to the user
+	public function custom(){
+
+		$user = Sentry::getUser();
+
+		$input = Input::all();
+
+		try {
+
+			if($user->id != 1){
+
+				throw new Exception("You do not have valid permissions to perform this action");
+
+			}
+
+			$teachers = Email::all();
+
+			$email = new UtilityMailman;
+
+			$email->setSubject($input['subject']);
+
+			$email->setBody(nl2br($input['body']));
+
+			//Decide if the response data should be parsed by Citrus
+			$email->setReportStatus(0);
+
+			// Where the attempted emails are stored
+			$array = array();
+
+			// Number of emails attempted
+			$counter = 0;
+
+			foreach ($teachers as $teacher) {
+
+				$email->setReceiver($teacher->to);
+
+				if(!is_null($teacher->name)){
+
+					$email->name = $teacher->name;
+
+				} else {
+
+					$email->name = $teacher->company;
+
+				}
+
+				$array[] = array(
+					'to' => $teacher->to,
+					'school' => $teacher->company,
+					'status' => $email->send(),
+					'name' => $teacher->name
+
+				);
+
+				$counter = $counter + 1;
+
+			}
+
+			$data = Citrus::combine('total', $counter.' messages were attempted', 'report', $array);
+			
+		} catch (Exception $e) {
+
+			$data = Citrus::response('error', $e);
+			
+		}
+
+		return $data;
+
+	}
+
 }

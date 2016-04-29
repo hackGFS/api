@@ -62,6 +62,36 @@ class PostOffice {
 
         //$data = $this->sendMail();
 
+        if (isset($this->report)) {
+
+            if (!$this->report) {
+
+                try {
+                    if(is_null($user)){
+
+                        $data = $this->sendMail();
+
+                    } else{
+
+                        $data = $this->sendMail($user);
+
+                    }
+
+                    $data = "1";
+
+                } catch (Exception $e) {
+                    
+                    $data = $e->getMessage();
+
+                }                
+             
+                return $data;
+
+            }
+
+        }
+
+
     	try {
     		if(is_null($user)){
 
@@ -169,6 +199,16 @@ class PostOffice {
 
             $data['user'] = null;
     	
+        }
+
+        if($this instanceof UtilityMailman){
+
+            if(isset($this->name)){
+
+                $data['name'] = $this->name;
+
+            }
+
         }
 
     	Mail::send('emails.template', $data, function($message) use ($data)
