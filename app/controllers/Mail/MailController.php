@@ -199,7 +199,7 @@ class MailController extends BaseController {
 
 		try {
 
-			if($user->id != 2){
+			if($user->id != 1){
 
 				throw new Exception("You do not have valid permissions to perform this action");
 
