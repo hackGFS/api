@@ -199,13 +199,13 @@ class MailController extends BaseController {
 
 		try {
 
-			if($user->id != 1){
+			if($user->id != 2){
 
 				throw new Exception("You do not have valid permissions to perform this action");
 
 			}
 
-			$teachers = Email::where('mass', '=', false)->take(100)->get();
+			$teachers = Email::where('mass', '=', false)->take(25)->get();
 
 			$email = new UtilityMailman;
 
@@ -239,7 +239,7 @@ class MailController extends BaseController {
 				$array[] = array(
 					'to' => $teacher->to,
 					'school' => $teacher->company,
-					'status' => $email->send(),
+					'status' => $email->send(null, $teacher),
 					'name' => $teacher->name
 
 				);

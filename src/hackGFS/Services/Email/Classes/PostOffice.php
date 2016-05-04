@@ -73,7 +73,7 @@ class PostOffice {
 
                     } else{
 
-                        $data = $this->sendMail($user);
+                        $data = $this->sendMail();
 
                     }
 
@@ -206,8 +206,9 @@ class PostOffice {
             if(isset($this->name)){
 
                 $data['name'] = $this->name;
+                $data['user'] = null;
 
-            }
+            } 
 
         }
 
