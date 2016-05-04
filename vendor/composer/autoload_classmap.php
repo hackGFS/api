@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddSentMass' => $baseDir . '/app/database/migrations/2016_05_04_023151_add_sent_mass.php',
     'AddSubscriptions' => $baseDir . '/app/database/migrations/2016_02_27_144146_add_subscriptions.php',
     'AuthController' => $baseDir . '/app/controllers/Auth/AuthController.php',
     'BaseController' => $baseDir . '/app/controllers/BaseController.php',

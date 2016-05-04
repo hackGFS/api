@@ -114,7 +114,7 @@ class MailController extends BaseController {
 
 		try {
 
-			if($user->id != 1 and $user->id != 12){
+			if($user->id != 1){
 
 				throw new Exception("You do not have the permission to perform this action");
 
@@ -199,13 +199,13 @@ class MailController extends BaseController {
 
 		try {
 
-			if($user->id != 1){
+			if($user->id != 2){
 
 				throw new Exception("You do not have valid permissions to perform this action");
 
 			}
 
-			$teachers = Email::all();
+			$teachers = Email::where('mass', '=', false)->take(100)->get();
 
 			$email = new UtilityMailman;
 
@@ -243,6 +243,13 @@ class MailController extends BaseController {
 					'name' => $teacher->name
 
 				);
+
+				if($array[0]['status'] == 1){
+
+					$teacher->mass = 1;
+					$teacher->save();
+
+				}
 
 				$counter = $counter + 1;
 
